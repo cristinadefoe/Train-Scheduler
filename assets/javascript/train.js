@@ -1,4 +1,3 @@
-
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyAMI-1fY66DJU6H8B9BbcXEs7PSkaLkENI",
@@ -53,42 +52,32 @@ trainData.ref().on("child_added", function (childSnapshot) {
     //Use Moments.js to calculate "Minutes Away" when next train will arrive in minutes
 
     //get current time
+
     //get train start from database
+
     //push start time back one year to make sure it comes before the current time
-    //calculate difference between train start time and current time
-    //calc time apart
-    //calc min till arrival
-    //adding mins till current time and format - calc mins before arrival
-    //add two more table data next arrival and mins till next train
-    // Assumptions
 
-
-    // var tFrequency = 3;
-
-    // // Time is 3:30 AM
-    // var firstTime = "03:30";
-
-    // // First Time (pushed back 1 year to make sure it comes before current time)
     // var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
     // console.log(firstTimeConverted);
 
-    // // Current Time
+    //  Current Time
     // var currentTime = moment();
     // console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
-    // // Difference between the times
+    //calculate difference between train start time and current time
     // var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
     // console.log("DIFFERENCE IN TIME: " + diffTime);
 
-    // // Time apart (remainder)
+    //calc time apart (remainder)
     // var tRemainder = diffTime % tFrequency;
     // console.log(tRemainder);
 
-    // // Minute Until Train
+    //calc minutes until train arrival
     // var tMinutesTillTrain = tFrequency - tRemainder;
     // console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
-    // // Next Train
+    //Calculate next train adding mins till current time and format - calc mins before arrival
+    //add two more table data next arrival and mins till next train
     // var nextTrain = moment().add(tMinutesTillTrain, "minutes");
     // console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
