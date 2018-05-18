@@ -38,6 +38,32 @@
             <p>Administrators enter the details in the form below to find the latest train time arrival.</p>
         </div>
 
+        <!-- Sign-up Form -->
+        <form role="form">
+            <div class="form-group">
+                <label for="trainName-input">Train Name:</label>
+                <input class="form-control" id="trainName-input" type="text">
+            </div>
+            <div class="form-group">
+                <label for="destination-input">Destination:</label>
+                <input class="form-control" id="destination-input" type="text">
+            </div>
+            <div class="form-group">
+                <label for="firstTrainTime-input">First Train Time (HH:mm - Military time):</label>
+                <input class="form-control" id="firstTrainTime-input" type="text">
+            </div>
+            <div class="form-group">
+                <label for="frequency-input">Frequency (in minutes)</label>
+                <input class="form-control" id="frequency-input" type="text">
+            </div>
+
+            <button class="btn btn-default" id="add-train" type="submit">Submit</button>
+        </form>
+
+        <br>
+        <br>
+        <br>
+
         <!-- Add Train Panel-->
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -54,28 +80,6 @@
                     </tr>
                 </table>
             </div>
-
-            <!-- Sign-up Form -->
-            <form role="form">
-                <div class="form-group">
-                    <label for="trainName-input">Train Name:</label>
-                    <input class="form-control" id="trainName-input" type="text">
-                </div>
-                <div class="form-group">
-                    <label for="destination-input">Destination:</label>
-                    <input class="form-control" id="destination-input" type="text">
-                </div>
-                <div class="form-group">
-                    <label for="firstTrainTime-input">First Train Time (HH:mm - Military time):</label>
-                    <input class="form-control" id="firstTrainTime-input" type="text">
-                </div>
-                <div class="form-group">
-                    <label for="frequency-input">Frequency (in minutes)</label>
-                    <input class="form-control" id="frequency-input" type="text">
-                </div>
-
-                <button class="btn btn-default" id="add-train" type="submit">Submit</button>
-            </form>
         </div>
     </div>
 

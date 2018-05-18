@@ -8,16 +8,6 @@ text-align: center;
 color: white;
 }
 
-h1:hover{
-font-size: 40px;
-background-color: #383F51;
-}
-
-p:hover{
-font-size: 25px;
-background-color: #383F51;
-}
-
 .col-lg-6{
 background-color: white;
 max-width: 1136px; 
@@ -44,6 +34,14 @@ background-color:  #D1BEB0;
 text-align: center;
 }
 
+trainTable {
+    border-collapse: collapse;
+}
+
+tr:nth-child(n + 9) {
+    visibility: hidden;
+}
+
 #add-train{
 background-color: #383F51;
 border: 0;
@@ -64,6 +62,7 @@ opacity: 0.7;
 
 form{
 background-color: lightgray;
+padding: 15px;
 }
 
 label{
