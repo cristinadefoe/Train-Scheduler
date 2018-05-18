@@ -9,7 +9,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
-//Create an instance of Firebase database
+// Create an instance of Firebase database
 var trainData = firebase.database();
 
 // Create variables to reference the database
@@ -18,8 +18,8 @@ var destination = "";
 var firstTrainTime = "";
 var frequency = "";
 
-//Add-train input form
-//Collect data from form and send the data to Firebase
+// Add-train input form
+// Collect data from form and send the data to Firebase
 $("#add-train").on("click", function (event) {
 
     // Don't refresh the page
@@ -30,10 +30,10 @@ $("#add-train").on("click", function (event) {
     firstTrainTime = $("#firstTrainTime-input").val().trim();
     frequency = $("#frequency-input").val().trim();
 
-    //Grab data and push to Firebase database
-    //trainData = Firebase
-    //ref referencing Firebase database
-    //push data to Firebase database
+    // Grab data and push to Firebase database
+    // trainData = Firebase
+    // ref referencing Firebase database
+    // push data to Firebase database
     trainData.ref().push({
         trainName: trainName,
         destination: destination,
@@ -42,48 +42,48 @@ $("#add-train").on("click", function (event) {
     })
 })
 
-//When childSnapshot is called this will populate trainTable 
-//on event listener
-//child_added parent is database and additional train is child
+// When childSnapshot is called this will populate trainTable 
+// on event listener
+// child_added parent is database and additional train is child
 trainData.ref().on("child_added", function (childSnapshot) {
-    console.log(childSnapshot);
 
-    //Use Moments.js to calculate "Next Arrival" when next train will arrive, relative to current time. 
-    //Use Moments.js to calculate "Minutes Away" when next train will arrive in minutes
+    // Use Moments.js to calculate "Next Arrival" when next train will arrive, relative to current time. 
+    // Use Moments.js to calculate "Minutes Away" when next train will arrive in minutes
 
-    //get current time
+    // Find when next train will arrive
+    var tFrequency = childSnapshot.val().frequency;
 
-    //get train start from database
+    // Push start time back one year to make sure it comes before the current time
+    var convertedDate = moment(childSnapshot.val().firstTrainTime, "hh:mm").subtract(1, "years");
+    var trainTime = moment(convertedDate).format('hh:mm');
 
-    //push start time back one year to make sure it comes before the current time
+    // Get current Time
+    var currentTime = moment();
 
-    // var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
-    // console.log(firstTimeConverted);
+    // Push back one year to make sure it comes before current time
+    var firstTimeConverted = moment(trainTime, 'hh:mm').subtract(1, 'years');
 
-    //  Current Time
-    // var currentTime = moment();
-    // console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+    // Calculate difference between train start time and current time
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
 
-    //calculate difference between train start time and current time
-    // var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-    // console.log("DIFFERENCE IN TIME: " + diffTime);
+    // Calculate time apart (remainder)
+    var tRemainder = diffTime % tFrequency;
 
-    //calc time apart (remainder)
-    // var tRemainder = diffTime % tFrequency;
-    // console.log(tRemainder);
+    // Calculate minutes until train arrival
+    var tMinutesTillTrain = tFrequency - tRemainder;
 
-    //calc minutes until train arrival
-    // var tMinutesTillTrain = tFrequency - tRemainder;
-    // console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+    // Calculate next train adding mins till current time and format - calc mins before arrival
+    // Add two more table data next arrival and mins till next train
+    var nextTrain = moment().add(tMinutesTillTrain, "minutes").format('hh:mm');
 
-    //Calculate next train adding mins till current time and format - calc mins before arrival
-    //add two more table data next arrival and mins till next train
-    // var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-    // console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
-
-    //Populate Current Train Schedule
+    // Display Current Train Schedule
     $("#trainTable").append(
         "<tr><td>" + childSnapshot.val().trainName + "</td><td>" + childSnapshot.val().destination + "</td><td>"
-        + childSnapshot.val().frequency + "</td></tr>"
-    )
+        + childSnapshot.val().frequency + "</td><td>" + trainTime + "</td><td>" + tMinutesTillTrain + "</td></tr>")
+}, function (errorObject) {
+    console.log("Errors handled:" + errorObject.code);
 })
+
+setInterval(function () {
+    location.reload();
+}, 60000)
