@@ -42,19 +42,20 @@
         <form role="form">
             <div class="form-group">
                 <label for="trainName-input">Train Name:</label>
-                <input class="form-control" id="trainName-input" type="text">
+                <!-- required will require users to enter actual data versus empty string -->
+                <input class="form-control" id="trainName-input" type="text" required>
             </div>
             <div class="form-group">
                 <label for="destination-input">Destination:</label>
-                <input class="form-control" id="destination-input" type="text">
+                <input class="form-control" id="destination-input" type="text" required>
             </div>
             <div class="form-group">
                 <label for="firstTrainTime-input">First Train Time (HH:mm - Military time):</label>
-                <input class="form-control" id="firstTrainTime-input" type="text">
+                <input class="form-control" id="firstTrainTime-input" type="text" required>
             </div>
             <div class="form-group">
                 <label for="frequency-input">Frequency (in minutes)</label>
-                <input class="form-control" id="frequency-input" type="text">
+                <input class="form-control" id="frequency-input" type="text" required>
             </div>
 
             <button class="btn btn-default" id="add-train" type="submit">Submit</button>
