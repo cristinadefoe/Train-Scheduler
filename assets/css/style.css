@@ -38,9 +38,9 @@ trainTable {
     border-collapse: collapse;
 }
 
-tr:nth-child(n + 9) {
+/* tr:nth-child(n + 9) {
     visibility: hidden;
-}
+} */
 
 #add-train{
 background-color: #383F51;
