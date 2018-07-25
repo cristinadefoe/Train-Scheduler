@@ -1,4 +1,4 @@
-# Train-Scheduler: Firebase Homework #7
+# Train-Scheduler
 
 This is a train schedule application that incorporates Firebase to host arrival and departure data of trains. Using Moment.js the app will calculate when the next train will arrive relative to current time. In addition, it will calculate when the next train will arrive in minutes.
 
@@ -25,9 +25,8 @@ After entering the data above, the fields "Next Arrival" and "Minutes Away" will
 
 ## Built With
 
-* Visual Studio Code (https://code.visualstudio.com) - Text editor
-* HTML - Provides structure of website
-* CSS - Styling of webpage
+* HTML 
+* CSS 
 * Bootstrap (https://getbootstrap.com) - Web framework used
 * Javascript 
 * Jquery (https://jquery.com) - Library used
